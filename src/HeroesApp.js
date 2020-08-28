@@ -1,8 +1,7 @@
-import React from 'react'
-import { NavBar } from './components/ui/NavBar'
-import { AppRouter } from './routers/AppRouter'
+import React from 'react';
+import { AppRouter } from './routers/AppRouter';
 
-export const HeroesApp = () => {
+export const HeroesApp = ({publisher}) => {
     return (
         <div> 
             <AppRouter/>

@@ -2,32 +2,20 @@ import React from 'react';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
-  } from "react-router-dom";
-
-import {DcScreen} from '../components/dc/DcScreen';
+    Route
+} from "react-router-dom";
 import {LoginScreen} from '../components/login/LoginScreen';
-import {MarvelScreen} from '../components/marvel/MarvelScreen';
-import {HeroesScreen} from '../components/heroes/HeroesScreen';
-
-
-import { NavBar } from '../components/ui/NavBar';
+import { DashboardRoutes } from './DashboardRoutes';
 
 export const AppRouter = () => {
     return (
         <>
-            <Router>
-                <NavBar/>
-                <div className="container-fluid">
+            <Router>   
                     <Switch>
+                        {/*El login siempre quedará fuera del NavBar, simulando el logout, ya no verá las opciones*/}
                         <Route exact path="/login" component={LoginScreen}/>                    
-                        <Route exact path="/dc" component={DcScreen}/>
-                        <Route exact path="/marvel" component={MarvelScreen}/>
-                        <Route exact path="" component={HeroesScreen}/>
-                    </Switch>
-                </div>
-                
+                        <Route path="/" component={DashboardRoutes}/>
+                    </Switch>                           
             </Router>
         </>
     );
