@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react'
-import { useParams, Redirect } from 'react-router-dom'
+import React, { useMemo } from 'react';
+import { useParams, Redirect } from 'react-router-dom';
 import { getHeroById } from '../../selectors/getHeroById';
 
 
@@ -12,16 +12,17 @@ export const HeroesScreen = ({history}) => {
     //const hero = getHeroById(heroId);
 
     if (!hero){
-        return <Redirect to="/"/>
+        return <Redirect to="/"/>;
     }
 
-    const handleReturn = ()=>{
-        if(history.length <=2){
+    const handleReturn = () => {
+        if(history.length <= 2){
             history.push("/");
         }else{
             history.goBack();
         }
     }
+
     return (
         <div className="row containerHeroes m-0 mt-4 animate__animated animate__fadeInLeft">
             <div className="cardHero card col-md-3 col-sm-6 col-xs-8">

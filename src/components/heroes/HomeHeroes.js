@@ -1,7 +1,7 @@
-import React from 'react'
-import { SearchHero } from '../search/SearchHero'
-import { heroes } from '../../data/heroes'
-import { HeroeCard } from './HeroeCard'
+import React from 'react';
+import { SearchHero } from '../search/SearchHero';
+import { heroes } from '../../data/heroes';
+import { HeroeCard } from './HeroeCard';
 
 export const HomeHeroes = () => {
     
@@ -14,8 +14,7 @@ export const HomeHeroes = () => {
                         <HeroeCard key={hero.id} hero = {hero}/>
                     ))
                 }
-            </div>
-            
+            </div>            
         </div>
     )
 }
