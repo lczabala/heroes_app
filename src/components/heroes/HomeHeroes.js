@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 //import { SearchHero } from '../search/SearchHero';
-import { heroes } from '../../data/heroes';
+//import { heroes } from '../../data/heroes';
 import { HeroeCard } from './HeroeCard';
 import queryString from 'query-string';
 import { useForms } from '../../hooks/useForms';
@@ -12,19 +12,18 @@ export const HomeHeroes = ({history}) => {
     //Location que nos proporciona react-router-dom
     const location = useLocation();
     const {q =''} = (queryString.parse(location.search));
-
+    
     const [{search}, handleOnChange] = useForms({
         search: q
     });
-
-    const heroFiltered = getHeroByName(search);
+    
+    const heroFiltered = useMemo(() => getHeroByName(q), [q]);
     console.log(heroFiltered);
-
     const handleSearch = (e) =>{
-        e.preventDefault();
-        
+        e.preventDefault();        
         history.push(`?q=${ search }`);
     }
+    console.log(heroFiltered);
 
     return (
         <div>
@@ -44,9 +43,25 @@ export const HomeHeroes = ({history}) => {
         </div>
             <div className="row containerHeroes m-0">
                 {
-                    heroes.map( hero =>(
-                        <HeroeCard key={hero.id} hero = {hero}/>
-                    ))
+                    (q === '')
+                        &&
+                        <div className="alert alert-info mt-2">
+                            Search a hero
+                        </div>
+                }
+                {/* {
+                    (q !== '' && heroFiltered.length===0)
+                        &&
+                        <div className="alert alert-info mt-2">
+                            There is no a hero with {q}
+                        </div>
+                } */}
+                {
+                    (q !== '')     
+                    &&                                                
+                    [heroFiltered].map(hero => (
+                        <HeroeCard key={hero.id} hero={hero}/>
+                    ))                                    
                 }
             </div>            
         </div>
