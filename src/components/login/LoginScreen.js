@@ -13,8 +13,7 @@ export const LoginScreen = ({history}) => {
     return (
         <div className="login-container">            
             <div className="col-4 login">
-                <h1>Login</h1>
-                
+                <h1>Login</h1>                
                     <div className="form-group">
                         <label>Email address</label>
                         <input type="email" className="form-control"/>                        

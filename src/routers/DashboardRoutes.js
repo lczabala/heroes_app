@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavBar } from '../components/ui/NavBar'
-import { Switch, Route} from 'react-router-dom'
+import { Switch, Route, Redirect} from 'react-router-dom'
 import { DcScreen } from '../components/dc/DcScreen'
 import { MarvelScreen } from '../components/marvel/MarvelScreen'
 import { HeroesScreen } from '../components/heroes/HeroesScreen'
@@ -17,7 +17,7 @@ export const DashboardRoutes = () => {
                     <Route exact path="/hero/:heroId" component={HeroesScreen}/>
                     <Route exact path="/" component={HomeHeroes}/>
 
-                    {/* <Redirect to="/"/> */}
+                    <Redirect to="/"/>
                 </Switch>
         </div>
     )
