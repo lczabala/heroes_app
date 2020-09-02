@@ -93,6 +93,12 @@ code {
   font-weight: 500;
 }
 
+.logout{
+  color: white;
+  
+}
+
+
 
 /* .dcBanner{
   background-image: url("../public/assets/banners/DCHeroes.jpg");
