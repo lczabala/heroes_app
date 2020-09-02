@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -6,15 +6,21 @@ import {
 } from "react-router-dom";
 import {LoginScreen} from '../components/login/LoginScreen';
 import { DashboardRoutes } from './DashboardRoutes';
+import { PrivateRoute } from './PrivateRoute';
+import { AuthContext } from '../auth/AuthContext';
 
 export const AppRouter = () => {
+    const {user} = useContext(AuthContext);
     return (
         <>
             <Router>   
                     <Switch>
                         {/*El login siempre quedará fuera del NavBar, simulando el logout, ya no verá las opciones*/}
                         <Route exact path="/login" component={LoginScreen}/>                    
-                        <Route path="/" component={DashboardRoutes}/>
+                        <PrivateRoute
+                            isAuthenticated={user.logged}
+                            path="/" 
+                            component={DashboardRoutes}/>
                     </Switch>                           
             </Router>
         </>
