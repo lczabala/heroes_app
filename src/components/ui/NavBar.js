@@ -1,7 +1,9 @@
-import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import React, { useContext } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../auth/AuthContext';
 
 export const NavBar = () => {
+    const {user} = useContext(AuthContext)
     return (
         <nav className="navbar navbar-expand-lg navbar-light nav-bar-color">
             <Link className="navbar-brand" to="/">Home</Link>
@@ -20,8 +22,14 @@ export const NavBar = () => {
                    
                 </ul>                
             </div>
+
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
                 <ul className="navbar-nav ml-auto">
+                    <li className="nav-item helloUser">
+                        {
+                            `Hello, ${user.name}!!`
+                        }
+                    </li>
                     <NavLink 
                         activeClassName="active"
                         className="nav-item nav-link" 

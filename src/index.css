@@ -84,6 +84,15 @@ code {
   background-color: #a3d2ca7c;
 }
 
+.helloUser{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+  color: #00416d;
+  font-weight: 500;
+}
+
 
 /* .dcBanner{
   background-image: url("../public/assets/banners/DCHeroes.jpg");

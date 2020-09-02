@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { AppRouter } from './routers/AppRouter';
 import { authReducer } from './auth/authReducer';
 import { AuthContext } from './auth/AuthContext';
@@ -10,15 +10,18 @@ const init = () =>{
 
 export const HeroesApp = ({publisher}) => {
     
-    const [user, dispatch] = useReducer(authReducer, {}, init)
+    const [user, dispatch] = useReducer(authReducer, [], init);
+
+    useEffect(() => {
+        localStorage.setItem('user', JSON.stringify(user));
+    }, [user])
 
     return (
         <div> 
             {/* El AuthContext estará disponible para toda la aplicacón, volviendo accesible el user y el dispatch para su uso */}
             <AuthContext.Provider value={{user, dispatch}}>
                 <AppRouter/>
-            </AuthContext.Provider>
-            
+            </AuthContext.Provider>            
         </div>
     )
 }

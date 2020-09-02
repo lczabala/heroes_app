@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { types } from '../../types/types';
+import { AuthContext } from '../../auth/AuthContext';
 
 //Se puede accerder al history ya que es una prop que viene con el router
 export const LoginScreen = ({history}) => {
 
+    const {dispatch} = useContext(AuthContext);
+
     const handleOnClick = () =>{
         //Con el history, usando el push, podemos ir a una ruta indicada
-        //history.push("/");
+        //history.push("/");       
+
+        dispatch({
+            type: types.login,
+            payload: {
+                name: 'Luis Zabala'
+            }
+        });
 
         history.replace("/");
     }
