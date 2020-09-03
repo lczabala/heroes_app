@@ -16,7 +16,10 @@ export const AppRouter = () => {
             <Router>   
                     <Switch>
                         {/*El login siempre quedará fuera del NavBar, simulando el logout, ya no verá las opciones*/}
-                        <PublicRoute exact path="/login" component={LoginScreen}/>                    
+                        <PublicRoute 
+                            isAuthenticated={user.logged}
+                            exact path="/login" 
+                            component={LoginScreen}/>                    
                         <PrivateRoute
                             isAuthenticated={user.logged}
                             path="/" 

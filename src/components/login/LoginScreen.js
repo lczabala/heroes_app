@@ -6,6 +6,8 @@ import { AuthContext } from '../../auth/AuthContext';
 export const LoginScreen = ({history}) => {
 
     const {dispatch} = useContext(AuthContext);
+    //obtengo el ultimo pathname guardado
+    const lastPathname = localStorage.getItem('pathName') || "/";
 
     const handleOnClick = () =>{
         //Con el history, usando el push, podemos ir a una ruta indicada
@@ -17,8 +19,9 @@ export const LoginScreen = ({history}) => {
                 name: 'Luis Zabala'
             }
         });
-
-        history.replace("/");
+        
+        //al hacer el login se redirecciona al ultimo pathname
+        history.replace(`${lastPathname}`);
     }
 
     return (

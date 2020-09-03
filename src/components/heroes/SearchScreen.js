@@ -18,8 +18,7 @@ export const SearchScreen = ({ history }) => {
     });
     const { searchText } = formValues;
     
-    const heroesFiltered = useMemo(() => getHeroByName( q ), [q])
-
+    const heroesFiltered = useMemo(() => getHeroByName( q ), [q]);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -55,10 +54,7 @@ export const SearchScreen = ({ history }) => {
                             Search...
                         </button>
                     </form>
-
-
                 </div>
-
 
                 <div className="col-7">
 
@@ -91,10 +87,7 @@ export const SearchScreen = ({ history }) => {
                     }
 
                 </div>
-
             </div>
-
-
         </div>
     )
 }

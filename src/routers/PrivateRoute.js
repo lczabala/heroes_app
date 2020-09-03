@@ -1,15 +1,18 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 //Este componnete permitirá renderizar el componente requerido sólo si el usuario está logueado
 
 //Se recibe el componente, el valor si el usuario está logueado y la ruta (en rest)
-export const PrivateRoute = (
-    {isAuthenticated,
+export const PrivateRoute = ({
+    isAuthenticated,
     component: Component,
-    ...rest}
-) => {
+    ...rest
+}) => {
+    //Se guarda en el localstorage la ultima ruta en la que estuvo el usuario
+    //Se estará actualizando constantemente
+    localStorage.setItem('pathName', rest.location.pathname);
     return (
         //El componente devuelve un Route con los valores que se reciben
         <Route

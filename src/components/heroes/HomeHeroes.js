@@ -18,13 +18,12 @@ export const HomeHeroes = ({history}) => {
     });
     
     const heroFiltered = useMemo(() => getHeroByName(q), [q]);
-    console.log(heroFiltered);
+    
     const handleSearch = (e) =>{
         e.preventDefault();        
         history.push(`?q=${ search }`);
     }
-    console.log(heroFiltered);
-
+    
     return (
         <div>
             <div>
